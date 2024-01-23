@@ -1,5 +1,5 @@
-import defaultTheme from 'tailwindcss/defaultTheme'
-import typography from '@tailwindcss/typography'
+import defaultTheme from 'tailwindcss/defaultTheme';
+import typography from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -9,15 +9,26 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-        jost: ['Jost', ...defaultTheme.fontFamily.sans]
+        jost: ['Jost', ...defaultTheme.fontFamily.sans],
       },
       boxShadow: ({ theme }) => ({
-        header: `0 0 1px 0 ${theme('colors.emerald.500')}`
+        header: `0 0 1px 0 ${theme('colors.emerald.500')}`,
       }),
       borderRadius: {
-        '4xl': '2rem'
-      }
-    }
+        '4xl': '2rem',
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            a: {
+              '&:hover': {
+                'text-decoration-thickness': '2px',
+              },
+            },
+          },
+        },
+      },
+    },
   },
-  plugins: [typography]
-}
+  plugins: [typography],
+};

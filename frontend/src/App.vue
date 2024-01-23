@@ -1,26 +1,72 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterLink, RouterView } from 'vue-router';
+import NavLink from '@/components/NavLink.vue';
+import SocialLink from '@/components/SocialLink.vue';
+import MaxContainer from '@/components/MaxContainer.vue';
+import { Linkedin, Github } from 'lucide-vue-next';
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+  <header className="relative z-10 w-full py-6">
+    <MaxContainer>
+      <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
+      <div className="flex flex-col items-center gap-4 sm:flex-row">
+        <RouterLink to="/">
+          <div className="inline-flex items-center justify-center">
+            <img
+              src="@/assets/jack-monogram-light.svg"
+              className="mr-2 h-10 w-10 dark:hidden"
+            />
+            <img
+              src="@/assets/jack-monogram-dark.svg"
+              className="hidden h-10 w-10 dark:block"
+            />
+          </div>
+        </RouterLink>
+        <!-- <div class="wrapper"> -->
+        <!-- <HelloWorld msg="You did it!" /> -->
+        <div class="flex items-center gap-16 sm:ml-auto">
+          <nav class="flex gap-16">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/about">About</NavLink>
+          </nav>
+        </div>
+        <!-- </div> -->
+      </div>
+    </MaxContainer>
   </header>
 
   <RouterView />
+
+  <footer class="pb-16 pt-5">
+    <MaxContainer>
+      <div className="flex w-full flex-col items-center justify-center">
+        <div
+          className="flex flex-row items-center gap-4 text-gray-800 dark:text-gray-200"
+        >
+          <SocialLink
+            href="https://www.linkedin.com/in/jack-mckenz"
+            label="LinkedIn"
+          >
+            <template #icon>
+              <Linkedin />
+            </template>
+          </SocialLink>
+          <SocialLink href="https://github.com/jackmckenzie" label="GitHub">
+            <template #icon>
+              <Github />
+            </template>
+          </SocialLink>
+        </div>
+        <small className="mt-4 font-medium text-gray-600 dark:text-gray-300">
+          &copy; {{ new Date().getFullYear() }} Jack McKenzie
+        </small>
+      </div>
+    </MaxContainer>
+  </footer>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -82,4 +128,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style> -->
